@@ -33,6 +33,10 @@ JpaRepository interface 추가.
 Entity 설정 추가. @Id, @GeneratedValue, @Column 등 설정 추가.
 Controller 에 repository 설정. 
 
+##URL 정리 
+mustash include 기능 사용.  
+mustash include 기능은 templates를 root 폴더로 인식.
+
 
 
 

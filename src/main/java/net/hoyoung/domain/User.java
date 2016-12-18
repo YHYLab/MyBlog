@@ -14,6 +14,7 @@ public class User {
 	
 	@Column(nullable=false, length=50)
 	private String email;
+	private String userId;
 	private String password;
 	private String name;
 
@@ -45,6 +46,14 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [name=" + name + ", email=" + email + ", password=" + password + "]";
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	
 	
