@@ -33,9 +33,16 @@ JpaRepository interface 추가.
 Entity 설정 추가. @Id, @GeneratedValue, @Column 등 설정 추가.
 Controller 에 repository 설정. 
 
-##URL 정리 
+## URL 정리 
 mustash include 기능 사용.  
 mustash include 기능은 templates를 root 폴더로 인식.
+
+## Update 기능 추가
+restful Api를 이용하는 경우 method 파라미터러 @PathVariable type 으로 지정.  
+이때 변수는 mapping에 사용되는 {} 안의 변수명이 같아야 한다.  
+화면 바인딩은 {{#user}}, {{/user}} 사이에 form을 넣고 value에 바인딩 한다.  
+put 이나 delete 로 수정하는 경우 input type을 hidden, name을 _method, value를 put이나 delete로 설정하고  
+@PutMapping 이나 @DeletMapping으로 설정한다.  
 
 
 

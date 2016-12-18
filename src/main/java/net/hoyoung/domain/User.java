@@ -55,6 +55,12 @@ public class User {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+
+	public void update(User updateUser) {
+		this.email = updateUser.getEmail();
+		this.password = updateUser.getPassword();
+		this.name = updateUser.getName();
+	}
 	
 	
 }
