@@ -1,6 +1,20 @@
-package net.hoyoung.model;
+package net.hoyoung.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class User {
+	
+	@Id
+	@GeneratedValue
+	private Long id;
+	
+	@Column(nullable=false, length=50)
+	private String email;
+	private String password;
 	private String name;
 
 	public String getName() {
@@ -27,8 +41,6 @@ public class User {
 		this.password = password;
 	}
 
-	private String email;
-	private String password;
 
 	@Override
 	public String toString() {
