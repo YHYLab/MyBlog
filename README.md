@@ -35,7 +35,8 @@ Controller 에 repository 설정.
 
 ## URL 정리 
 mustash include 기능 사용.  
-mustash include 기능은 templates를 root 폴더로 인식.
+mustash include 기능은 templates를 root 폴더로 인식.  
+include 폴더내의 파일을 접근하기 어려울 때 ./mvnw spring-boot:run & 명령어로 시작.  
 
 ## Update 기능 추가
 restful Api를 이용하는 경우 method 파라미터러 @PathVariable type 으로 지정.  
