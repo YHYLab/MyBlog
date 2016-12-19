@@ -26,11 +26,11 @@ model 로 받아들이는 경우 toString 메서드가 있어야 한다.
 ## JPA  
 기존 pom spring-boot 설정에서 카피하여 starter-data-jpa 부분만 변경  
 줄 전체를 copy 할 때 alt + cmd + 화살표  
-H2 의존성 pom 에 추가.
-application.properties 에 spring.datasource 관련 설정 추가.
-http://localhost:8080/h2-console/login.jsp 로 h2 접근 가능.
-JpaRepository interface 추가.
-Entity 설정 추가. @Id, @GeneratedValue, @Column 등 설정 추가.
+H2 의존성 pom 에 추가.  
+application.properties 에 spring.datasource 관련 설정 추가.  
+http://localhost:8080/h2-console/login.jsp 로 h2 접근 가능.  
+JpaRepository interface 추가.  
+Entity 설정 추가. @Id, @GeneratedValue, @Column 등 설정 추가.  
 Controller 에 repository 설정. 
 
 ## URL 정리 
@@ -41,13 +41,14 @@ include 폴더내의 파일을 접근하기 어려울 때 ./mvnw spring-boot:run
 ## Update 기능 추가
 restful Api를 이용하는 경우 method 파라미터러 @PathVariable type 으로 지정.  
 이때 변수는 mapping에 사용되는 {} 안의 변수명이 같아야 한다.  
-화면 바인딩은 {{#user}}, {{/user}} 사이에 form을 넣고 value에 바인딩 한다.  
+화면 바인딩은 {{#user}}, {{/user}} 사이에 form을 넣고 value에 바인딩 한다.   
 put 이나 delete 로 수정하는 경우 input type을 hidden, name을 _method, value를 put이나 delete로 설정하고  
 @PutMapping 이나 @DeletMapping으로 설정한다.  
 
 ## 간단한 login 기능 추가
-JPA조회 시 기존 필드 참조 시 findBy + 필드 형식으로 추가.
-세션에 정보 추가 하고 싶으면 컨트롤러에서 HttpSession 을 받아 정보 입력.
-
+JPA조회 시 기존 필드 참조 시 findBy + 필드 형식으로 추가.  
+세션에 정보 추가 하고 싶으면 컨트롤러에서 HttpSession 을 받아 정보 입력.  
+type으로 클래스 찾을 때 cmd + shift + t.  
+리소스 찾을 때 cmd + shift + r.  
 
 
