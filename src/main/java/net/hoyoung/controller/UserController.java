@@ -1,5 +1,7 @@
 package net.hoyoung.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,25 @@ public class UserController {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	@GetMapping("/loginForm")
+	public String logrinForm(){
+		return "/user/login";
+	}
+	
+	@PostMapping("/login")
+	public String login(String email, String password, HttpSession session){
+		User user = userRepository.findByEmail(email);
+		if(user == null){
+			return "redirect:/users/loginForm";
+		}
+		if(!password.equals(user.getPassword())){
+			return "redirect:/users/loginForm";
+		}
+		
+		session.setAttribute("user", user);
+		return "redirect:/users";
+	}
 
 	@PostMapping("")
 	public String create(User user){

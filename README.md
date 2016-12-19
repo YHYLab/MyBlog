@@ -34,8 +34,8 @@ Entity 설정 추가. @Id, @GeneratedValue, @Column 등 설정 추가.
 Controller 에 repository 설정. 
 
 ## URL 정리 
-mustash include 기능 사용.  
-mustash include 기능은 templates를 root 폴더로 인식.  
+mustache include 기능 사용.  
+mustache include 기능은 templates를 root 폴더로 인식.  
 include 폴더내의 파일을 접근하기 어려울 때 ./mvnw spring-boot:run & 명령어로 시작.  
 
 ## Update 기능 추가
@@ -45,6 +45,9 @@ restful Api를 이용하는 경우 method 파라미터러 @PathVariable type 으
 put 이나 delete 로 수정하는 경우 input type을 hidden, name을 _method, value를 put이나 delete로 설정하고  
 @PutMapping 이나 @DeletMapping으로 설정한다.  
 
+## 간단한 login 기능 추가
+JPA조회 시 기존 필드 참조 시 findBy + 필드 형식으로 추가.
+세션에 정보 추가 하고 싶으면 컨트롤러에서 HttpSession 을 받아 정보 입력.
 
 
 
