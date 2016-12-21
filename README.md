@@ -52,3 +52,14 @@ type으로 클래스 찾을 때 cmd + shift + t.
 리소스 찾을 때 cmd + shift + r.  
 
 
+## Data 자동 import 추가
+JPA에서 기본으로 루트 디렉토리에서 import.sql 문이 있으면 자동으로 실행한다.
+
+
+## 로그아웃 기능 추가.
+spring.mustache.expose-session-attributes=false 설정으로  
+세션의 정보를 mustache에서 사용할 수 있다.  
+
+
+
+
