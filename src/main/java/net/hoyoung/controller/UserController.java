@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import net.hoyoung.domain.User;
 import net.hoyoung.repository.UserRepository;
+import net.hoyoung.util.HttpSessionUtil;
 
 @Controller
 @RequestMapping("/users")
@@ -31,17 +32,17 @@ public class UserController {
 		if(user == null){
 			return "redirect:/users/loginForm";
 		}
-		if(!password.equals(user.getPassword())){
+		if(!user.isMatchPassword(password)){
 			return "redirect:/users/loginForm";
 		}
 		
-		session.setAttribute("sessionUser", user);
+		session.setAttribute(HttpSessionUtil.USER_SESSION_KEY, user);
 		return "redirect:/users";
 	}
 
 	@PostMapping("")
 	public String create(User user){
-		System.out.println("name : " + user.getName() + ", email : " + user.getEmail() + ", password : " + user.getPassword());
+		System.out.println(user.toString());
 		userRepository.save(user);
 		return "redirect:/users";
 	}
@@ -59,11 +60,10 @@ public class UserController {
 	
 	@GetMapping("/{id}/form")
 	public String userUpdateForm(@PathVariable Long id, Model model, HttpSession session){
-		Object tempUser = session.getAttribute("sessionUser");
-		if(tempUser == null){
+		if(!HttpSessionUtil.isLogin(session)){
 			return "redirect:/";
 		}
-		User sessioUser = (User)tempUser;
+		User sessioUser = (User)HttpSessionUtil.getUserFromSessionUser(session);
 		
 		if(!id.equals(sessioUser.getId())){
 			throw new IllegalStateException("You can't update.");
@@ -75,11 +75,10 @@ public class UserController {
 	
 	@PostMapping("/{id}")
 	public String userUpdate(@PathVariable Long id, User updatedUser, HttpSession session){
-		Object tempUser = session.getAttribute("sessionUser");
-		if(tempUser == null){
+		if(!HttpSessionUtil.isLogin(session)){
 			return "redirect:/user/loginForm";
 		}
-		User sessioUser = (User)tempUser;
+		User sessioUser = HttpSessionUtil.getUserFromSessionUser(session);
 		
 		if(!id.equals(sessioUser.getId())){
 			throw new IllegalStateException("You can't update.");
@@ -92,7 +91,7 @@ public class UserController {
 	
 	@GetMapping("/logout")
 	public String logout(HttpSession session){
-		session.removeAttribute("sessionUser");
+		session.removeAttribute(HttpSessionUtil.USER_SESSION_KEY);
 		return "redirect:/";
 	}
 }

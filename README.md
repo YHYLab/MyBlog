@@ -60,6 +60,14 @@ JPA에서 기본으로 루트 디렉토리에서 import.sql 문이 있으면 자
 spring.mustache.expose-session-attributes=false 설정으로  
 세션의 정보를 mustache에서 사용할 수 있다.  
 
+## 리팩토링 
+변수 명명 리팩토링 단축키 : alt + cmd + r  
+객체의 속성 비교시에 속성 값을 꺼내오는것 보다는 객체 내부에 비교 로직을 만들어서  
+객체에 위임하는 습관이 더 좋다.  
+spring.jpa.show-sql=true 로 sql 문 보여지도록 설정 가능.  
+spring.jpa.properties.hibernate.format-sql=true 로 좀더 보는데 편하게 볼수 있다.  
+
+
 
 
 

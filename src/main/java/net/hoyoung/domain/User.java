@@ -66,5 +66,11 @@ public class User {
 		this.name = updateUser.getName();
 	}
 	
+	public boolean isMatchPassword(String newPassword){
+		return this.password.matches(newPassword);
+	}
 	
+	public boolean isMatchId(Long newId){
+		return this.id == newId;
+	}
 }
