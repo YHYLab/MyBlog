@@ -12,6 +12,10 @@ public class User {
 	@GeneratedValue
 	private Long id;
 	
+	public Long getId() {
+		return id;
+	}
+
 	@Column(nullable=false, length=50)
 	private String email;
 	private String userId;
