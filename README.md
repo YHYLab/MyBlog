@@ -67,7 +67,9 @@ spring.mustache.expose-session-attributes=false 설정으로
 spring.jpa.show-sql=true 로 sql 문 보여지도록 설정 가능.  
 spring.jpa.properties.hibernate.format-sql=true 로 좀더 보는데 편하게 볼수 있다.  
 
-
+## 질문 쓰기 기능 추가
+JPA에서 생성자를 사용하는 경우 기본 생성자가 반드시 있어야 한다.  
+getter/setter 의 단축키는 alt + cmd + s 로 선택.  
 
 
 

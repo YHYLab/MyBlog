@@ -7,17 +7,7 @@ import javax.persistence.Id;
 @Entity
 public class Question {
 
-	@Override
-	public String toString() {
-		return "Question [id=" + id + ", title=" + title + ", contents=" + contents + ", wirter=" + wirter + "]";
-	}
 
-	public Question(String title, String contents, String wirter) {
-		super();
-		this.title = title;
-		this.contents = contents;
-		this.wirter = wirter;
-	}
 
 	@Id
 	@GeneratedValue
@@ -27,7 +17,29 @@ public class Question {
 	
 	private String contents;
 	
-	private String wirter;
+	private String writer;
+
+	@Override
+	public String toString() {
+		return "Question [id=" + id + ", title=" + title + ", contents=" + contents + ", wirter=" + writer + "]";
+	}
+	
+	public Question() {
+	}
+	
+	public Question(String title, String contents, String writer) {
+		this.title = title;
+		this.contents = contents;
+		this.writer = writer;
+	}
+	
+	public String getWriter() {
+		return writer;
+	}
+
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
 
 	public Long getId() {
 		return id;
@@ -53,11 +65,4 @@ public class Question {
 		this.contents = contents;
 	}
 
-	public String getWirter() {
-		return wirter;
-	}
-
-	public void setWirter(String wirter) {
-		this.wirter = wirter;
-	}
 }
