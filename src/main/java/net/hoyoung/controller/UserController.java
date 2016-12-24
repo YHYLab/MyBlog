@@ -37,7 +37,7 @@ public class UserController {
 		}
 		
 		session.setAttribute(HttpSessionUtil.USER_SESSION_KEY, user);
-		return "redirect:/users";
+		return "redirect:/";
 	}
 
 	@PostMapping("")

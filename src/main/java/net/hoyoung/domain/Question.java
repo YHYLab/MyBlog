@@ -1,8 +1,14 @@
 package net.hoyoung.domain;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Question {
@@ -17,7 +23,11 @@ public class Question {
 	
 	private String contents;
 	
-	private String writer;
+	private LocalDateTime createDate;
+	
+	@ManyToOne
+	@JoinColumn(foreignKey = @ForeignKey( name = "fk_question_writer"))
+	private User writer;
 
 	@Override
 	public String toString() {
@@ -27,17 +37,18 @@ public class Question {
 	public Question() {
 	}
 	
-	public Question(String title, String contents, String writer) {
+	public Question(String title, String contents, User writer) {
 		this.title = title;
 		this.contents = contents;
 		this.writer = writer;
+		this.createDate = LocalDateTime.now();
 	}
 	
-	public String getWriter() {
+	public User getWriter() {
 		return writer;
 	}
 
-	public void setWriter(String writer) {
+	public void setWriter(User writer) {
 		this.writer = writer;
 	}
 
@@ -65,4 +76,15 @@ public class Question {
 		this.contents = contents;
 	}
 
+	public String getFormattedCreateDate(){
+		if ( createDate == null){
+			return "";
+		}
+		return createDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+	}
+
+	public void update(String title, String contents) {
+		this.title = title;
+		this.contents = contents;
+	}
 }
