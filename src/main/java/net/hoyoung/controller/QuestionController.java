@@ -58,10 +58,11 @@ public class QuestionController {
 	
 	@PutMapping("/{id}")
 	public String update(@PathVariable Long id, String title, String contents, HttpSession session){
-		if(!HttpSessionUtil.isLogin(session)){
-			return "redirect:/users/loginForm";
-		}
+		User loginUser = HttpSessionUtil.getUserFromSessionUser(session);
 		Question question = questionRepository.findOne(id);
+		if(!question.isSameUser(loginUser)){
+			return "redirect:/";
+		}
 		question.update(title, contents);
 		questionRepository.save(question);
 		return "redirect:/";
@@ -69,7 +70,12 @@ public class QuestionController {
 	
 
 	@DeleteMapping("/{id}")
-	public String delete(@PathVariable Long id){
+	public String delete(@PathVariable Long id, HttpSession session){
+		User loginUser = HttpSessionUtil.getUserFromSessionUser(session);
+		Question question = questionRepository.findOne(id);
+		if(!question.isSameUser(loginUser)){
+			return "redirect:/";
+		}
 		questionRepository.delete(id);
 		return "redirect:/";
 	}
