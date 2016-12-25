@@ -58,6 +58,9 @@ public class QuestionController {
 	
 	@PutMapping("/{id}")
 	public String update(@PathVariable Long id, String title, String contents, HttpSession session){
+		if(HttpSessionUtil.isLogin(session)){
+			return "/users/loginForm";
+		}
 		User loginUser = HttpSessionUtil.getUserFromSessionUser(session);
 		Question question = questionRepository.findOne(id);
 		if(!question.isSameUser(loginUser)){

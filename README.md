@@ -85,3 +85,6 @@ JPA 와 Java 객체사이의 LocalDateTime 과 TimeStamp 객체 호환을
 데이터 입력시에는 TimeStamp로 변환하여 저장하고 데이터를 객체에 담을 때에는  
 LocalDateTime으로 변환한다.  
 
+## 답글 기능 추가.
+답글 리스트도 질문 리스트의 객체 처럼 정의하고 사용.  
+OnToMany 관계 설정.  
