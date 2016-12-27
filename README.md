@@ -88,3 +88,9 @@ LocalDateTime으로 변환한다.
 ## 답글 기능 추가.
 답글 리스트도 질문 리스트의 객체 처럼 정의하고 사용.  
 OnToMany 관계 설정.  
+
+## 답글 달기 AJAX로 변경 
+JSON 데이터 전송을 위한 Controller 의 Requetst 를 RestRquest로 변경  
+e.preventDefault() 를 이용.  
+ajax 이용 시 화면의 html 속성에 append 하는 방식.  
+

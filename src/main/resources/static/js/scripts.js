@@ -7,3 +7,58 @@ String.prototype.format = function() {
         ;
   });
 };
+
+$(".answer-write input[type=submit]").click(addAnswer);
+function addAnswer(e){
+	//e.preventDefault();
+	console.log("click me!");
+	
+	var query_string = $(".answer-write").serialize();
+	console.log("query : " + query_string);
+	var url = $(".answer-write").attr("action");
+	
+	console.log("url : " + url);
+	
+	$.ajax({
+		type : 'post',
+		url : url,
+		data : query_string,
+		dataType : 'json',
+		error : onError,
+		success : onSuccess
+	});
+}
+
+function onError(){
+	
+}
+
+function onSuccess(data){
+	console.log(data);
+	var answerTemplate = $("#answerTemplate").html();
+	var template = answerTemplate.format(data.writer.name, data.formattedCreateDate, data.contents, data.question.id, data.id);
+	$(".qna-comment-slipp-articles").prepend(template);
+	$("textarea[name=contents]").val("");
+}
+
+
+$("a.link-delete-article").click(deleteAnswer);
+
+function deleteAnswer(e){
+	//e.preventDefault();
+	var url = $(this).attr("href");
+	console.log("url = " + url);
+	
+	$.ajax({
+		type : 'delete',
+		url : url,
+		dataType : 'json',
+		error : function(xhr, status){
+			console.log('error');
+		},
+		sucssecc : function(data, status){
+			console.log(success);
+		}
+	})
+	
+}

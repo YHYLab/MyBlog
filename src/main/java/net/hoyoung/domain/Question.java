@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 
+
 @Entity
 public class Question {
 
@@ -29,7 +30,7 @@ public class Question {
 	private LocalDateTime createDate;
 	
 	@OneToMany(mappedBy="question")
-	@OrderBy("id ASC")
+	@OrderBy("id DESC")
 	private List<Answer> answers;
 
 	@ManyToOne
