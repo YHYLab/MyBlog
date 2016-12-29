@@ -10,7 +10,7 @@ String.prototype.format = function() {
 
 $(".answer-write input[type=submit]").click(addAnswer);
 function addAnswer(e){
-	//e.preventDefault();
+	e.preventDefault();
 	console.log("click me!");
 	
 	var query_string = $(".answer-write").serialize();
@@ -45,20 +45,28 @@ function onSuccess(data){
 $("a.link-delete-article").click(deleteAnswer);
 
 function deleteAnswer(e){
-	//e.preventDefault();
-	var url = $(this).attr("href");
+	e.preventDefault();
+	
+	console.log("click delete!!");
+	var deleteBtn = $(this);
+	var url = deleteBtn.attr("href");
 	console.log("url = " + url);
 	
 	$.ajax({
-		type : 'delete',
+		type : 'post',
 		url : url,
 		dataType : 'json',
 		error : function(xhr, status){
-			console.log('error');
+			console.log("error");
 		},
-		sucssecc : function(data, status){
-			console.log(success);
+		success : function(data, status){
+			console.log(data);
+			if(data.valid){
+				deleteBtn.closest('article').remove();
+			}else{
+				console.log(data.errMessage);
+			}
 		}
-	})
+	});
 	
 }

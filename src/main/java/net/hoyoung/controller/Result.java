@@ -1,6 +1,11 @@
 package net.hoyoung.controller;
 
 public class Result {
+	@Override
+	public String toString() {
+		return "Result [valid=" + valid + ", errMessage=" + errMessage + "]";
+	}
+
 	private boolean valid;
 	private String errMessage;
 	
@@ -19,5 +24,21 @@ public class Result {
 	
 	public static Result fail(String errMessage){
 		return new Result(false, errMessage);
+	}
+
+	public boolean isValid() {
+		return valid;
+	}
+
+	public void setValid(boolean valid) {
+		this.valid = valid;
+	}
+
+	public String getErrMessage() {
+		return errMessage;
+	}
+
+	public void setErrMessage(String errMessage) {
+		this.errMessage = errMessage;
 	}
 }
