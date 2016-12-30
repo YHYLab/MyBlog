@@ -42,18 +42,16 @@ function onSuccess(data){
 }
 
 
-$("a.link-delete-article").click(deleteAnswer);
-
-function deleteAnswer(e){
+$(".qna-comment-slipp-articles").on('click', '.article-util li button', function(e){
 	e.preventDefault();
 	
 	console.log("click delete!!");
-	var deleteBtn = $(this);
-	var url = deleteBtn.attr("href");
+	var form = $(this).closest('form');
+	var url = form.attr("action");
 	console.log("url = " + url);
 	
 	$.ajax({
-		type : 'post',
+		type : 'delete',
 		url : url,
 		dataType : 'json',
 		error : function(xhr, status){
@@ -62,11 +60,11 @@ function deleteAnswer(e){
 		success : function(data, status){
 			console.log(data);
 			if(data.valid){
-				deleteBtn.closest('article').remove();
+				form.closest('article').remove();
 			}else{
 				console.log(data.errMessage);
 			}
 		}
 	});
 	
-}
+});

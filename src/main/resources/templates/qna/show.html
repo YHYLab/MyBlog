@@ -74,8 +74,9 @@
 										<a class="link-modify-article" href="/api/qna/updateAnswer/{{question.id}}">수정</a>
 									  </li>
 									  <li>
-										<a class="link-delete-article" href="/api/questions/{{question.id}}/answers/{{id}}">
-											삭제</a>
+										<form class="link-delete-article" action="/api/questions/{{question.id}}/answers/{{id}}">
+											<button type="submit" class="link-delete-article">삭제</button>
+										</form>
 									  </li>
                                   </ul>
                               </div>
@@ -116,12 +117,15 @@
 				<a class="link-modify-article" href="/api/qna/updateAnswer/{3}">수정</a>
 			</li>
 			<li>
-				<a class="link-delete-article" href="/api/questions/{3}/answers/{4}">삭제</a>
+				<form class="form-delete" action="/api/questions/{3}/answers/{4}">
+					<button type="submit" class="link-delete-article">삭제</button>
+				</form>
 			</li>
 		</ul>
 		</div>
 	</article>
 </script>
-{{> /include/footer}}
+
+     {{> /include/footer}}
 	</body>
 </html>

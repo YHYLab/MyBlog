@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import net.hoyoung.domain.Answer;
@@ -39,7 +38,7 @@ public class ApiAnswerController {
 		return answerRepository.save(answer);
 	}
 	
-	@PostMapping("/{id}")
+	@DeleteMapping("/{id}")
 	public Result delete(@PathVariable Long questionId, @PathVariable Long id, HttpSession session){
 		if( !HttpSessionUtil.isLogin(session)){
 			return Result.fail("로그인해야 합니다.");
