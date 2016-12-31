@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 @Entity
 public class Question {
@@ -26,6 +28,9 @@ public class Question {
 
 	@Lob
 	private String contents;
+	
+	@JsonProperty
+	private Integer countOfAnswer;
 
 	private LocalDateTime createDate;
 	
@@ -98,5 +103,21 @@ public class Question {
 
 	public boolean isSameUser(User loginUser) {
 		return this.writer.equals(loginUser);
+	}
+
+	public Integer getCountOfAnswer() {
+		return countOfAnswer;
+	}
+
+	public void setCountOfAnswer(Integer countOfAnswer) {
+		this.countOfAnswer = countOfAnswer;
+	}
+	
+	public void addAnswer(){
+		this.countOfAnswer += 1;
+	}
+	
+	public void deleteAnswer(){
+		this.countOfAnswer -= 1;
 	}
 }

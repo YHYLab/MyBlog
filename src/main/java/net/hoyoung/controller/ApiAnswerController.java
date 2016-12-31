@@ -35,6 +35,7 @@ public class ApiAnswerController {
 		User user = HttpSessionUtil.getUserFromSessionUser(session);
 		Question question = questionRepository.findOne(questionId);
 		Answer answer = new Answer(question, contents, user);
+		question.addAnswer();
 		return answerRepository.save(answer);
 	}
 	
@@ -44,10 +45,12 @@ public class ApiAnswerController {
 			return Result.fail("로그인해야 합니다.");
 		}
 		Answer answer = answerRepository.findOne(id);
+		Question question = questionRepository.findOne(questionId);
 		User user = HttpSessionUtil.getUserFromSessionUser(session);
 		if(answer.equals(user)){
 			return Result.fail("자신의 글만 삭제 할 수 있습니다.");
 		}
+		question.deleteAnswer();
 		answerRepository.delete(answer);
 		return Result.ok();
 	}

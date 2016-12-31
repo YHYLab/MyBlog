@@ -94,3 +94,7 @@ JSON 데이터 전송을 위한 Controller 의 Requetst 를 RestRquest로 변경
 e.preventDefault() 를 이용.  
 ajax 이용 시 화면의 html 속성에 append 하는 방식.  
 
+## 댓글 개수 추가
+question에 count 관련 컬럼 추가  
+answer이 추가되거나 삭제 될 때 count 수량 적용.  
+
