@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
@@ -18,11 +16,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @Entity
-public class Question {
+public class Question extends AbstractEntity {
 
-	@Id
-	@GeneratedValue
-	private Long id;
 
 	private String title;
 
@@ -44,7 +39,7 @@ public class Question {
 
 	@Override
 	public String toString() {
-		return "Question [id=" + id + ", title=" + title + ", contents=" + contents + ", wirter=" + writer + "]";
+		return "Question [id=" + getId() + ", title=" + title + ", contents=" + contents + ", wirter=" + writer + "]";
 	}
 
 	public Question() {
@@ -63,14 +58,6 @@ public class Question {
 
 	public void setWriter(User writer) {
 		this.writer = writer;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getTitle() {

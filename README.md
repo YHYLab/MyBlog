@@ -98,3 +98,8 @@ ajax 이용 시 화면의 html 속성에 append 하는 방식.
 question에 count 관련 컬럼 추가  
 answer이 추가되거나 삭제 될 때 count 수량 적용.  
 
+## JPA 관련 리팩토링
+ID, CREATE_DATE, MODIFIED_DATE 추상클래스에서 정의.  
+@MappedSuperClass, @EntityListener 이용.  
+@CreatedDate, @LastModifiedDate 는 메인 클래스에 @EnableAuditing 필요.  
+
