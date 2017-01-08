@@ -103,3 +103,10 @@ ID, CREATE_DATE, MODIFIED_DATE 추상클래스에서 정의.
 @MappedSuperClass, @EntityListener 이용.  
 @CreatedDate, @LastModifiedDate 는 메인 클래스에 @EnableAuditing 필요.  
 
+## Swagger API TEST UI 자동생성   
+swagger2 관련 dependency 추가.  
+@EnableSwagger2 main 클래스에 추가.  
+Docket 클래스를 생성하여 path설정.  
+http://localhost:8080/swagger-ui.html 로 접속하여 테스트 가능.  
+
+
