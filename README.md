@@ -110,3 +110,42 @@ Docket 클래스를 생성하여 path설정.
 http://localhost:8080/swagger-ui.html 로 접속하여 테스트 가능.  
 
 
+## Docker
+Dockerfile 생성  
+    
+	FROM ubuntu:latest
+	RUN apt-get update
+	RUN apt-get install -y language-pack-ko
+	
+	# set locale ko_KR
+	RUN locale-gen ko_KR.UTF-8
+	
+	ENV LANG ko_KR.UTF-8
+	ENV LANGUAGE ko_KR.UTF-8
+	ENV LC_ALL ko_KR.UTF-8
+	
+	CMD /bin/bash
+
+dockerfile의 경로에서 도커 이미지 생성  
+
+	docker build --tag ko_ubuntu:latest ./
+
+도커 컨테이너 생성  
+
+	docker run -dit --name slipp ubuntu  
+
+도커 컨테이너 정지  
+
+	docker stop slipp
+
+도커 컨테이너 시작/재시작  
+
+	docker start/restart slipp
+	
+도커 컨테이너 삭제  
+
+	docker rm slipp
+	
+도커 컨테이너 접속  
+
+	docker exec -it slipp /bin/bash
